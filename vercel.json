@@ -1,8 +1,18 @@
 {
+    "version": 2,
+    "builds": [
+        {
+            "src": "src/api/web.js",
+            "use": "@vercel/node"
+        }
+    ],
     "rewrites": [
         {
             "source": "/(.*)",
-            "destination": "/index.html"
+            "destination": "/src/api/web.js"
         }
-    ]
+    ],
+    "env": {
+        "VERIFY_TOKEN": "isJustString"
+    }
 }
