@@ -7,7 +7,6 @@ let app = express();
 
 //config view engine
 viewEngine(app);
-
 webRoutes(app);
 
 app.use(bodyParser.json());
