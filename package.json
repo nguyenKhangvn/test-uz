@@ -1,6 +1,5 @@
 {
-  // "type": "module",
-  "scripts": {
+   "scripts": {
     "start": "node dist/server.js",
     "dev": "nodemon --exec babel-node src/server.js",
     "build": "babel src -d dist"
