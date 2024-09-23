@@ -6,13 +6,10 @@
             "use": "@vercel/node"
         }
     ],
-    "rewrites": [
+    "routes": [
         {
             "source": "/(.*)",
-            "destination": "/src/server.js"
+            "dest": "/"
         }
-    ],
-    "env": {
-        "VERIFY_TOKEN": "isJustString"
-    }
+    ]
 }
