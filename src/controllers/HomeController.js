@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const getHomePage = (req, res) => {
-    return res.render('homepage.ejs'); 
+    return res.render("homepage.ejs"); 
 };
 
 const postWebHook = (req, res) => {
