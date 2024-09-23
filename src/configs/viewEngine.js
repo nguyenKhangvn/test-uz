@@ -6,4 +6,4 @@ let configViewEngine = (app) => {
     app.set("views", "./src/views");
 };
 // tim cac file ejs in views
-module.exports = configViewEngine;
+export default configViewEngine;
