@@ -10,6 +10,7 @@ const getHomePage = (req, res) => {
 
 const postWebHook = (req, res) => {
   let body = req.body;
+  console.log('Received body:', body);
 
   if (body.object === 'page') {
       body.entry.forEach(entry => {
@@ -28,6 +29,7 @@ const postWebHook = (req, res) => {
 
       res.status(200).send('EVENT_RECEIVED');
   } else {
+      console.error('Invalid object received:', body.object);
       res.sendStatus(404);
   }
 };
@@ -129,6 +131,7 @@ function callSendAPI(sender_psid, response) {
   }, (err, res, body) => {
     if (!err) {
       console.log('message sent!')
+      console.log('Response:', body);
     } else {
       console.error("Unable to send message:" + err);
     }
