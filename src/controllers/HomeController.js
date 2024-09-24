@@ -1,7 +1,7 @@
 
 import dotenv from 'dotenv';
 import axios from 'axios';
-
+import request from 'request';
 dotenv.config();
 
 const getHomePage = (req, res) => {
@@ -121,54 +121,54 @@ function handlePostback(sender_psid, received_postback) {
 }
 
 // Sends response messages via the Send API
-// function callSendAPI(sender_psid, response) {
-//     // Construct the message body
-//   let request_body = {
-//     "recipient": {
-//       "id": sender_psid
-//     },
-//     "message": response
-//   }
+function callSendAPI(sender_psid, response) {
+    // Construct the message body
+  let request_body = {
+    "recipient": {
+      "id": sender_psid
+    },
+    "message": response
+  }
 
-//   // Send the HTTP request to the Messenger Platform
-//   axios({
-//     "uri": "https://graph.facebook.com/v2.6/me/messages",
-//     "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN },
-//     "method": "POST",
-//     "json": request_body
-//   }, (err, res, body) => {
-//     if (!err) {
-//       console.log('message sent!')
-//     } else {
-//       console.error("Unable to send message:" + err);
-//     }
-//   }); 
-// }
+  // Send the HTTP request to the Messenger Platform
+  request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent!')
+    } else {
+      console.error("Unable to send message:" + err);
+    }
+  }); 
+}
 
 // Sends response messages via the Send API
-function callSendAPI(sender_psid, response) {
-  // Construct the message body
-  let request_body = {
-      "recipient": {
-          "id": sender_psid
-      },
-      "message": response
-  };
+// function callSendAPI(sender_psid, response) {
+//   // Construct the message body
+//   let request_body = {
+//       "recipient": {
+//           "id": sender_psid
+//       },
+//       "message": response
+//   };
 
-  // Send the HTTP request to the Messenger Platform using axios
-  axios({
-      method: 'post',
-      url: 'https://graph.facebook.com/v2.6/me/messages',
-      params: { "access_token": process.env.PAGE_ACCESS_TOKEN },  // Thay qs bằng params
-      data: request_body  // Thay json bằng data
-  })
-  .then((res) => {
-      console.log('Message sent successfully:', res.data);
-  })
-  .catch((err) => {
-      console.error('Unable to send message:', err);
-  });
-}
+//   // Send the HTTP request to the Messenger Platform using axios
+//   axios({
+//       method: 'post',
+//       url: 'https://graph.facebook.com/v2.6/me/messages',
+//       params: { "access_token": process.env.PAGE_ACCESS_TOKEN },  // Thay qs bằng params
+//       data: request_body  // Thay json bằng data
+//   })
+//   .then((res) => {
+//       console.log('Message sent successfully:', res.data);
+//   })
+//   .catch((err) => {
+//       console.error('Unable to send message:', err);
+//   });
+// }
 
 
 export default {
